@@ -1,0 +1,4 @@
+项目中需要导入sc相关包，因此先将sc.jar构建到本地仓库中
+命令如下：
+    mvn install:install-file -Dfile=sc-core-1.7.4.jar -DgroupId=com.suncreate -DartifactId=sc-core -Dversion=1.7.4 -Dpackaging=jar
+    mvn install:install-file -Dfile=sc-commons-2.3.2.jar -DgroupId=com.suncreate -DartifactId=sc-commons -Dversion=2.3.2 -Dpackaging=jar
