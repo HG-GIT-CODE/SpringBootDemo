@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+    <settings>
+        <!-- 配置驼峰匹配 deptName - dept_name,实际开发中建议不配置，在mapper.xml手动去配置 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 实际开发不用此种方式，建议在appilication中配置mybatis.mapper-locations较方便-->
+    <!-- 添加xml映射文件，不能用*.xml,另一种方式在appilication中配置mybatis.mapper-locations属性 -->
+    <!--<mappers>-->
+        <!--<mapper resource="mybatis/mapper/DeptMapper.xml"/>-->
+    <!--</mappers>-->
+</configuration>
