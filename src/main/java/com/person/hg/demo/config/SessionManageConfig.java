@@ -3,7 +3,6 @@ package com.person.hg.demo.config;
 import com.suncreate.session.RedisSessionManager;
 import com.suncreate.session.SessionManager;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.JedisPool;
@@ -13,7 +12,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * 整合sc的SessionManage功能，其中使用JedisPool
  */
 @Configuration
-public class SessionManageConfig extends CachingConfigurerSupport {
+public class SessionManageConfig {
 
     /**
      * SpringSession  需要注意的就是redis需要2.8以上版本，然后开启事件通知，在redis配置文件里面加上
@@ -49,17 +48,17 @@ public class SessionManageConfig extends CachingConfigurerSupport {
 
 
 
-//    @Bean
-//    public JedisPool jedisPool(){
-//        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-//        jedisPoolConfig.setMaxIdle(maxIdle);
-//        jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
-//        jedisPoolConfig.setMaxTotal(maxActive);
-//        jedisPoolConfig.setMinIdle(minIdle);
-//        JedisPool jedisPool = new JedisPool(jedisPoolConfig,host,port,timeout,null);
-//
-//        return  jedisPool;
-//    }
+    @Bean
+    public JedisPool jedisPool(){
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxIdle(maxIdle);
+        jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
+        jedisPoolConfig.setMaxTotal(maxActive);
+        jedisPoolConfig.setMinIdle(minIdle);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig,host,port,timeout,null);
+
+        return  jedisPool;
+    }
 
     @Bean
     public SessionManager sessionManager() {

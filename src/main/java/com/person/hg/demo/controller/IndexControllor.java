@@ -19,9 +19,6 @@ import java.util.Map;
 public class IndexControllor {
 
     @Autowired
-    RedisTemplate redisTemplate;
-
-    @Autowired
     private SessionManager sessionManager;
 
     @RequestMapping("/")
@@ -30,6 +27,7 @@ public class IndexControllor {
     }
 
     @RequestMapping("/login")
+//    @ResponseBody
     public String login(HttpServletRequest request, HttpServletResponse response) {
         Map map = new HashMap();
         String userLogin = request.getParameter("userLogin");
@@ -38,12 +36,13 @@ public class IndexControllor {
         map.put("userPassword",userPassword);
         SecuUser user = new SecuUser();
         user.setUserLogin(userLogin);
-        request.getSession().setAttribute("user",user);
+//        request.getSession().setAttribute("user",user);
 
         StoreHttpSession session = sessionManager.createEmptySession(request, response);
         session.setAttribute("user", user);
         sessionManager.saveSession(session, response);
 
+//        return "登录成功！";
         return "redirect:/city/getCity";
     }
 
