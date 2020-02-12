@@ -14,8 +14,6 @@ spring:
     data: # 项目启动时执行的sql脚本、操作数据语句
       - classpath:data_city_test.sql
 
-
-
   # 切换Druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
@@ -54,4 +52,16 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml #或者在config-location配置文件（mybatis-config.xml）中配置<mappers><mapper resource="mybatis/mapper/DeptMapper.xml"/></mappers>
 
+
+#pagehelper配置项
+#pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
+#打印Mybatis生成的SQL
+#logging:
+#  level:
+#    com.person.hg.demo.mapper: debug
 

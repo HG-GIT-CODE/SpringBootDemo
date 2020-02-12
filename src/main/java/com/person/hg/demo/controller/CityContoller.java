@@ -1,5 +1,7 @@
 package com.person.hg.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.person.hg.demo.entity.City;
 import com.person.hg.demo.mapper.CityMapper;
 import io.swagger.annotations.Api;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
-@Api(description = "City操作接口")
+
+@Api(tags = "该controllor的显示的名称",description = "City操作接口")
 @RestController
 @RequestMapping("/city")
 public class CityContoller {
@@ -28,9 +32,10 @@ public class CityContoller {
     }
 
     @ApiOperation(value = "获取城市", notes="获取城市notes")
-    @GetMapping(value = {"/getCity"})
-    public City getCityById() {
-        return cityMapper.getCityById(1);
+    @GetMapping(value = {"/getCityByList"})
+    public List<City> getCityByList() {
+        PageHelper.startPage(1,2);
+        return cityMapper.getCityByList();
     }
 
 }

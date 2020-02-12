@@ -4,6 +4,8 @@ import com.person.hg.demo.entity.City;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 注解版
  */
@@ -13,6 +15,9 @@ public interface CityMapper {
 
     @Select("select * from city where id = #{id}")
     public City getCityById(Integer id);
+
+    @Select("select * from city")
+    public List<City> getCityByList();
 
     @Options(useGeneratedKeys=true, keyProperty = "id") // 为了匹配主键自增
     @Insert("insert into city(city_name) values(#{cityName})")
