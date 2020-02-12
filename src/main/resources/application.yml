@@ -60,8 +60,3 @@ mybatis:
   support-methods-arguments: true
   params: count=countsql
 
-#打印Mybatis生成的SQL
-#logging:
-#  level:
-#    com.person.hg.demo.mapper: debug
-
