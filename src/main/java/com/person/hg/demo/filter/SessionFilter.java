@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 @Component
-public class SessionFilter/* implements Filter*/ {
+public class SessionFilter implements Filter {
     private String[] IGNORE_SUFFIX = new String[]{".png", ".jpg", ".jpeg", ".gif", ".css", ".js", ".xml"};
     private Set<String> interceptUrlSet = new HashSet();
     private static final Logger logger = Logger.getLogger(SessionFilter.class);

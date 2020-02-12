@@ -46,6 +46,15 @@ public class SessionManageConfig {
     @Value("${spring.redis.pool.max-wait}")
     private long maxWaitMillis;
 
+    // 过期时间为maxInactiveInterval + expirationUpdateInterval
+    // Redis最大不活跃（更新）间隔时间 秒
+    private int maxInactiveInterval = 1500;
+    // Redis周期更新时间
+    private int expirationUpdateInterval = 300;
+
+
+
+
 
 
     @Bean
@@ -70,6 +79,8 @@ public class SessionManageConfig {
         jedisPoolConfig.setMinIdle(minIdle);
         JedisPool jedisPool = new JedisPool(jedisPoolConfig,host,port,timeout,null);
         RedisSessionManager sessionManager = new RedisSessionManager();
+        sessionManager.setMaxInactiveInterval(maxInactiveInterval);
+        sessionManager.setExpirationUpdateInterval(expirationUpdateInterval);
         sessionManager.setJedisPool(jedisPool);
 
         return sessionManager;

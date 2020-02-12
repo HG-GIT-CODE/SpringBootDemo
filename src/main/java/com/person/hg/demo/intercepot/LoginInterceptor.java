@@ -1,6 +1,5 @@
 package com.person.hg.demo.intercepot;
 
-import com.person.hg.demo.model.SecuUser;
 import com.suncreate.session.SessionManager;
 import com.suncreate.session.StoreHttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
